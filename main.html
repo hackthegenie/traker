@@ -1,0 +1,27 @@
+
+		
+<template name ="tracker">
+	{{#each helper}}
+		{{> trackerContent}}
+	{{/each}}
+</template>
+		<template name="trackerContent"> 
+			<tr><td>{{Log}}</td><td>{{Date}}</td><td><a class="btn trash"><i class="icon-trash"></i></a></td></tr>
+		</template>
+
+
+<template name="hero">
+	
+	    <div class="hero-unit">
+		
+		<h1>track this</h1>
+			<div class="clear"><br /></div>
+		
+	<form id="trackerForm" onsubmit="logToday()" action="#"> 
+				<input id="trackerData" class="lead">
+				<div class="clear"><br /></div>	
+				
+		<div class="btn btn-success btn-large text-center" value ="track this"> Track </div>
+			</form>
+		</div>
+</template>

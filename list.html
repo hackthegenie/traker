@@ -1,0 +1,98 @@
+
+<!-- ####### LIST COLLECTION TEMPLATE ######-->
+
+<template name="list">
+	{{#each helper}}
+      {{> listContent}}
+	{{else}}
+		<script>$('#myModal').modal(options)</script>
+    {{/each}}	
+</template>
+		<template name="listContent">
+			<li><a tabindex="-1" href= "{{_id}}">{{name}}	</a></li>	
+		</template>
+
+<!-- ####### END OF COLLECTION TEMPLATE ######-->
+
+<template name="listSelected">
+	{{#each helper}}
+		{{> listSelctedContent}}
+		{{else}}
+		Pick your list
+	{{/each}}
+</template>	
+		<template name="listSelctedContent">
+			{{name}}
+		</template>	
+
+<!-- ####################-->
+<template name="listEdit">
+	
+	<table class="table table-striped table-bordered">
+	<tr class="success">
+		<td  class="lead"><strong>Default</strong></td>
+		<td  class="lead"><strong>Name</strong></td>
+		<td><i class="icon-trash"></i></td>
+	</tr>
+	
+	{{#each helper}}
+		
+		{{> listEditContent}}
+		
+	{{/each}}
+	
+	</table>
+	
+</template>
+			<template name="listEditContent">
+				<tr>
+					<td><input type="radio" name="edit" {{selected}}> {{_id}} </td>
+					<td>{{name}}</td>
+					<td><a class="btn trash"><i class="icon-trash"></i></a></td>
+				</tr>
+			</template>
+
+
+<!-- ####################-->
+
+<template name="NewList">
+	<div class="input-append">
+	  <input "input-block-level" type="text"  id="listInput">
+	  <button class="btn" type="button">New List</button>
+	</div>
+</template>
+
+
+<template name ="navigation">
+		
+	<div class="dropdown lead">
+		
+		
+	  <button class="btn btn-inverse btn-block btn dropdown-toggle" data-toggle="dropdown"><span class="lead">{{> listSelected}}</span></button>
+	  </button>
+	   	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			{{> list}}
+		  </ul>
+	</div>
+</template>
+
+
+
+<template name="modal">
+<!-- Button to trigger modal -->
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Create a new list</h3>
+  </div>
+  <div class="modal-body">
+	{{> NewList}}
+	{{> listEdit}}
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+</template>
